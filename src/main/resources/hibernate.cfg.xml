@@ -11,7 +11,7 @@
       org.hibernate.dialect.MySQL8Dialect
     </property>
     <property name="hbm2ddl.auto">
-     update
+    update
 
     </property>
 

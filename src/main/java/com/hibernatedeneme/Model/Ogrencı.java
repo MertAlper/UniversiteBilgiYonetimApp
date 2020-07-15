@@ -22,7 +22,6 @@ public class Ogrencı {
     private Date doğumTarihi;
     private String şifre;
 
-
     @ManyToMany
     @JoinTable(
             name = "Dersleri_alan_ogrenciler",

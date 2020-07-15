@@ -5,21 +5,21 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.EnableMBeanExport;
 
-@SpringBootApplication
-public class DbdenemeApplication {
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+
+public class springBootApplication {
 
     public static void main(String[] args) {
 
-
-
-
-
+        System.setProperty("spring.config.name", "universiteBilgiYonetim");
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             // start a transaction
             transaction = session.beginTransaction();
-            // save the student objects
+
 
             // commit transaction
             transaction.commit();
@@ -30,7 +30,7 @@ public class DbdenemeApplication {
             e.printStackTrace();
         }
 
-        SpringApplication.run(DbdenemeApplication.class, args);
+        SpringApplication.run(springBootApplication.class, args);
     }
 
 }

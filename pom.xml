@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hibernateDeneme</groupId>
-    <artifactId>dbdeneme</artifactId>
+    <artifactId>UniversiteBilgiYonetim</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dbdeneme</name>
+    <name>UniversiteBilgiYonetim</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
