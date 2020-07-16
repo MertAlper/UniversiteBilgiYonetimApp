@@ -1,4 +1,4 @@
-package com.hibernatedeneme.Model;
+package com.UniversiteBilgiYonetimi.Model;
 
 import javax.persistence.*;
 import java.util.HashSet;

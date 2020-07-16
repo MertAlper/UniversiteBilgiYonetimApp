@@ -1,9 +1,8 @@
-package com.hibernatedeneme.Model;
+package com.UniversiteBilgiYonetimi.Model;
 
-import com.hibernatedeneme.dbdeneme.NotId;
+import com.UniversiteBilgiYonetimi.main.NotId;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @IdClass(NotId.class)

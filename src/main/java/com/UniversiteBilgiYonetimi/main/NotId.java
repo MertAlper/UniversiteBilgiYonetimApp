@@ -1,10 +1,6 @@
-package com.hibernatedeneme.dbdeneme;
+package com.UniversiteBilgiYonetimi.main;
 
-import com.hibernatedeneme.Model.Ogrencı;
-
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 public class NotId implements Serializable{
 

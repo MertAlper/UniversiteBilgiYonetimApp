@@ -11,7 +11,7 @@
       org.hibernate.dialect.MySQL8Dialect
     </property>
     <property name="hbm2ddl.auto">
-    create
+    update
 
     </property>
 
@@ -28,13 +28,13 @@
       root
     </property>
 
-     <mapping class="com.hibernatedeneme.Model.Fakulte"/>
-    <mapping class="com.hibernatedeneme.Model.Bolum"/>
-    <mapping class="com.hibernatedeneme.Model.Ders"/>
-    <mapping class="com.hibernatedeneme.Model.Ogrencı"/>
-    <mapping class="com.hibernatedeneme.Model.OgretimUyesi"/>
-    <mapping class="com.hibernatedeneme.Model.Notlar"/>
-    <mapping class="com.hibernatedeneme.dbdeneme.NotId"/>
+     <mapping class="com.UniversiteBilgiYonetimi.Model.Fakulte"/>
+    <mapping class="com.UniversiteBilgiYonetimi.Model.Bolum"/>
+    <mapping class="com.UniversiteBilgiYonetimi.Model.Ders"/>
+    <mapping class="com.UniversiteBilgiYonetimi.Model.Ogrencı"/>
+    <mapping class="com.UniversiteBilgiYonetimi.Model.OgretimUyesi"/>
+    <mapping class="com.UniversiteBilgiYonetimi.Model.Notlar"/>
+    <mapping class="com.UniversiteBilgiYonetimi.main.NotId"/>
 
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->

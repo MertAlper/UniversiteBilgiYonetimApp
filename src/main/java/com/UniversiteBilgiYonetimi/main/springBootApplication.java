@@ -1,12 +1,10 @@
-package com.hibernatedeneme.dbdeneme;
+package com.UniversiteBilgiYonetimi.main;
 
-import com.hibernatedeneme.Model.Fakulte;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.annotation.EnableMBeanExport;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 
