@@ -11,7 +11,7 @@
       org.hibernate.dialect.MySQL8Dialect
     </property>
     <property name="hbm2ddl.auto">
-    update
+    create
 
     </property>
 
@@ -20,7 +20,7 @@
     </property>
 
     <property name="hibernate.connection.url">
-    jdbc:mysql://localhost:3306/deneme?useSSL=false&amp;serverTimezone=UTC</property>
+    jdbc:mysql://localhost:3306/universiteDb?useSSL=false&amp;serverTimezone=UTC</property>
     <property name="hibernate.connection.username">
       root
     </property>

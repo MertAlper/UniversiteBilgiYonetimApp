@@ -8,23 +8,29 @@ import java.util.Set;
 public class OgretimUyesi {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long ogretimUyesiId;
+
+
+
     private String eMail;
-    private String isimSoyisim;
+    private String ad;
+    private String soyad;
     private String alan;
     private String ünvan;
     private String şifre;
     private String telefonNo;
 
     @ManyToOne
-    @JoinColumn(name = "bolum",referencedColumnName ="bolumİsmi" )
-    private Bolum bolum;
+    @JoinColumn(name = "bolumId",referencedColumnName ="bolumId" )
+    private Bolum bolumId;
 
 
     @ManyToMany
     @JoinTable(
             name = "Dersleri_veren_hocalar",
-            joinColumns = { @JoinColumn(name = "eMail") },
-            inverseJoinColumns = { @JoinColumn(name = "dersAdı") }
+            joinColumns = { @JoinColumn(name = "ogretımUyesiId") },
+            inverseJoinColumns = { @JoinColumn(name = "dersId") }
     )
     private Set<Ders> verilenDersler= new HashSet<>();
 
@@ -37,12 +43,20 @@ public class OgretimUyesi {
         this.eMail = eMail;
     }
 
-    public String getIsimSoyisim() {
-        return isimSoyisim;
+    public String getAd() {
+        return ad;
     }
 
-    public void setIsimSoyisim(String isimSoyisim) {
-        this.isimSoyisim = isimSoyisim;
+    public void setAd(String ad) {
+        this.ad = ad;
+    }
+
+    public String getSoyad() {
+        return soyad;
+    }
+
+    public void setSoyad(String soyad) {
+        this.soyad = soyad;
     }
 
     public String getAlan() {
@@ -77,12 +91,12 @@ public class OgretimUyesi {
         this.telefonNo = telefonNo;
     }
 
-    public Bolum getBolum() {
-        return bolum;
+    public Bolum getBolumId() {
+        return bolumId;
     }
 
-    public void setBolum(Bolum bolum) {
-        this.bolum = bolum;
+    public void setBolumId(Bolum bolumId) {
+        this.bolumId = bolumId;
     }
 
     public Set<Ders> getVerilenDersler() {
@@ -91,5 +105,13 @@ public class OgretimUyesi {
 
     public void setVerilenDersler(Set<Ders> verilenDersler) {
         this.verilenDersler = verilenDersler;
+    }
+
+    public long getOgretimUyesiId() {
+        return ogretimUyesiId;
+    }
+
+    public void setOgretimUyesiId(long ogretimUyesiId) {
+        this.ogretimUyesiId = ogretimUyesiId;
     }
 }

@@ -1,13 +1,14 @@
 package com.hibernatedeneme.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Fakulte {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long fakulteId;
+
     private String fakulteİsmi;
     private int hocaSayısı;
 
@@ -30,5 +31,14 @@ public class Fakulte {
 
     public void setHocaSayısı(int hocaSayısı) {
         this.hocaSayısı = hocaSayısı;
+
+    }
+
+    public long getFakulteId() {
+        return fakulteId;
+    }
+
+    public void setFakulteId(long fakulteId) {
+        this.fakulteId = fakulteId;
     }
 }

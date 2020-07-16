@@ -10,38 +10,38 @@ import java.io.Serializable;
 public class Notlar  {
 
      @Id
-    private String ders;
+     @ManyToOne
+     @JoinColumn(name = "dersId")
+    private Ders dersId;
      @Id
-    private int ogrenciNo;
-
-    private String dersNotu;
-
-
+     @ManyToOne
+     @JoinColumn(name = "ogrenciID")
+     private Ogrencı ogrenciId;
 
 
+    private String harfNotu;
 
-
-    public String getDers() {
-        return ders;
+    public Ders getDersId() {
+        return dersId;
     }
 
-    public void setDers(String ders) {
-        this.ders = ders;
+    public void setDersId(Ders dersId) {
+        this.dersId = dersId;
     }
 
-    public int getOgrenciNo() {
-        return ogrenciNo;
+    public Ogrencı getOgrenciId() {
+        return ogrenciId;
     }
 
-    public void setOgrenciNo(int ogrenciNo) {
-        this.ogrenciNo = ogrenciNo;
+    public void setOgrenciId(Ogrencı ogrenciId) {
+        this.ogrenciId = ogrenciId;
     }
 
-    public String getDersNotu() {
-        return dersNotu;
+    public String getHarfNotu() {
+        return harfNotu;
     }
 
-    public void setDersNotu(String dersNotu) {
-        this.dersNotu = dersNotu;
+    public void setHarfNotu(String harfNotu) {
+        this.harfNotu = harfNotu;
     }
 }

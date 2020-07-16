@@ -8,47 +8,28 @@ import java.util.Objects;
 
 public class NotId implements Serializable{
 
-    private String ders;
+    private long dersId;
 
 
-    private int ogrenciNo;
+    private long ogrenciId;
 
     public NotId( ) {
 
     }
 
-    public NotId(String ders, int ogrenciNo) {
-        this.ders = ders;
-        this.ogrenciNo = ogrenciNo;
+    public long getDersId() {
+        return dersId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        NotId notId = (NotId) o;
-        return ogrenciNo == notId.ogrenciNo &&
-                Objects.equals(ders, notId.ders);
+    public void setDersId(long dersId) {
+        this.dersId = dersId;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(ders, ogrenciNo);
+    public long getOgrenciId() {
+        return ogrenciId;
     }
 
-    public String getDers() {
-        return ders;
-    }
-
-    public void setDers(String ders) {
-        this.ders = ders;
-    }
-
-    public int getOgrenciNo() {
-        return ogrenciNo;
-    }
-
-    public void setOgrenciNo(int ogrenciNo) {
-        this.ogrenciNo = ogrenciNo;
+    public void setOgrenciId(long ogrenciId) {
+        this.ogrenciId = ogrenciId;
     }
 }

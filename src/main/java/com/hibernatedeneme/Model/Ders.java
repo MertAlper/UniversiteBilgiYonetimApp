@@ -1,8 +1,6 @@
 package com.hibernatedeneme.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +8,9 @@ import java.util.Set;
 public class Ders {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long dersId;
+
     private String dersAdı;
 
     private String acıklama;
@@ -25,9 +26,13 @@ public class Ders {
     private Set<OgretimUyesi> ogretimUyeleri=new HashSet<>();
 
 
+    public long getDersId() {
+        return dersId;
+    }
 
-
-
+    public void setDersId(long dersId) {
+        this.dersId = dersId;
+    }
 
     public String getDersAdı() {
         return dersAdı;

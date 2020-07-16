@@ -9,14 +9,21 @@ import java.util.Set;
 public class Ogrencı {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long ogrenciId;
+
+
+
+
     private int ogrenciNo ;
 
     @ManyToOne
-    @JoinColumn(name = "bolum",referencedColumnName ="bolumİsmi" )
-    private Bolum  bolum;
+    @JoinColumn(name = "bolumId",referencedColumnName ="bolumId" )
+    private Bolum  bolumId;
 
     private int sınıf;
-    private String isimSoyisim;
+    private String ad;
+    private String soyad;
     private String Email ;
     private int telefonNo;
     private Date doğumTarihi;
@@ -25,15 +32,27 @@ public class Ogrencı {
     @ManyToMany
     @JoinTable(
             name = "Dersleri_alan_ogrenciler",
-            joinColumns = { @JoinColumn(name = "ogrenciNo") },
-            inverseJoinColumns = { @JoinColumn(name = "dersAdı") }
+            joinColumns = { @JoinColumn(name = "bolumId") },
+            inverseJoinColumns = { @JoinColumn(name = "dersId") }
     )
     private Set<Ders> Dersler= new HashSet<>();
 
 
+    public Bolum getBolumId() {
+        return bolumId;
+    }
 
+    public void setBolumId(Bolum bolumId) {
+        this.bolumId = bolumId;
+    }
 
+    public long getOgrenciId() {
+        return ogrenciId;
+    }
 
+    public void setOgrenciId(long ogrenciId) {
+        this.ogrenciId = ogrenciId;
+    }
 
     public int getOgrenciNo() {
         return ogrenciNo;
@@ -43,13 +62,7 @@ public class Ogrencı {
         this.ogrenciNo = ogrenciNo;
     }
 
-    public Bolum getBolum() {
-        return bolum;
-    }
 
-    public void setBolum(Bolum bolum) {
-        this.bolum = bolum;
-    }
 
     public int getSınıf() {
         return sınıf;
@@ -59,12 +72,20 @@ public class Ogrencı {
         this.sınıf = sınıf;
     }
 
-    public String getIsimSoyisim() {
-        return isimSoyisim;
+    public String getAd() {
+        return ad;
     }
 
-    public void setIsimSoyisim(String isimSoyisim) {
-        this.isimSoyisim = isimSoyisim;
+    public void setAd(String ad) {
+        this.ad = ad;
+    }
+
+    public String getSoyad() {
+        return soyad;
+    }
+
+    public void setSoyad(String soyad) {
+        this.soyad = soyad;
     }
 
     public String getEmail() {
