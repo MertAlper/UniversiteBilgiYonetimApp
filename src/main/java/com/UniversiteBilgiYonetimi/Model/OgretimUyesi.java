@@ -9,38 +9,57 @@ public class OgretimUyesi {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ogretimUyesiId;
+    private long id;
 
+    @Column(name = "EMAIL")
+    private String email;
 
-
-    private String eMail;
+    @Column(name = "AD")
     private String ad;
+
+    @Column(name = "SOYAD")
     private String soyad;
+
+    @Column(name = "ALAN")
     private String alan;
-    private String ünvan;
+
+    @Column(name = "UNVAN")
+    private String unvan;
+
+    @Column(name = "SIFRE")
     private String şifre;
+
+    @Column(name = "TELEFON_NO")
     private String telefonNo;
 
     @ManyToOne
-    @JoinColumn(name = "bolumId",referencedColumnName ="bolumId" )
+    @JoinColumn(name = "BOLUM_ID")
     private Bolum bolumId;
 
 
     @ManyToMany
     @JoinTable(
             name = "Dersleri_veren_hocalar",
-            joinColumns = { @JoinColumn(name = "ogretımUyesiId") },
-            inverseJoinColumns = { @JoinColumn(name = "dersId") }
+            joinColumns = { @JoinColumn(name = "OGRETIM_UYESI_ID") },
+            inverseJoinColumns = { @JoinColumn(name = "DERS_ID") }
     )
     private Set<Ders> verilenDersler= new HashSet<>();
 
 
-    public String geteMail() {
-        return eMail;
+    public long getId() {
+        return id;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getAd() {
@@ -67,12 +86,12 @@ public class OgretimUyesi {
         this.alan = alan;
     }
 
-    public String getÜnvan() {
-        return ünvan;
+    public String getUnvan() {
+        return unvan;
     }
 
-    public void setÜnvan(String ünvan) {
-        this.ünvan = ünvan;
+    public void setUnvan(String unvan) {
+        this.unvan = unvan;
     }
 
     public String getŞifre() {
@@ -105,13 +124,5 @@ public class OgretimUyesi {
 
     public void setVerilenDersler(Set<Ders> verilenDersler) {
         this.verilenDersler = verilenDersler;
-    }
-
-    public long getOgretimUyesiId() {
-        return ogretimUyesiId;
-    }
-
-    public void setOgretimUyesiId(long ogretimUyesiId) {
-        this.ogretimUyesiId = ogretimUyesiId;
     }
 }

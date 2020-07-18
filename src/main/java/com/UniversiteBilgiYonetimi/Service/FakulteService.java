@@ -2,19 +2,21 @@ package com.UniversiteBilgiYonetimi.Service;
 
 import com.UniversiteBilgiYonetimi.Model.Fakulte;
 import com.UniversiteBilgiYonetimi.Repository.FakulteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FakulteService implements IfakulteService{
+@Transactional
+public class FakulteService implements IFakulteService{
 
+    @Autowired
     private FakulteRepository fakulteRepository;
 
-
     public  void ekle(Fakulte fakulte){
-
         fakulteRepository.save(fakulte);
     }
 

@@ -5,39 +5,39 @@ import javax.persistence.*;
 
 @Entity
 public class Bolum {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long bolumId;
+    private long id;
 
-
-    private String bolumİsmi;
+    @Column(name = "ADI")
+    private String adi;
 
     @ManyToOne
-    @JoinColumn(name = "fakulteId")
+    @JoinColumn(name = "FAKULTE_ID")
+    private Fakulte fakulte;
 
-    private Fakulte fakulteId;
-
-    public String getBolumİsmi() {
-        return bolumİsmi;
+    public long getId() {
+        return id;
     }
 
-    public void setBolumİsmi(String bolumİsmi) {
-        this.bolumİsmi = bolumİsmi;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Fakulte getFakulteId() {
-        return fakulteId;
+    public String getAdi() {
+        return adi;
     }
 
-    public void setFakulteId(Fakulte fakulteId) {
-        this.fakulteId = fakulteId;
+    public void setAdi(String adi) {
+        this.adi = adi;
     }
 
-    public long getBolumId() {
-        return bolumId;
+    public Fakulte getFakulte() {
+        return fakulte;
     }
 
-    public void setBolumId(long bolumId) {
-        this.bolumId = bolumId;
+    public void setFakulte(Fakulte fakulte) {
+        this.fakulte = fakulte;
     }
 }

@@ -5,28 +5,39 @@ import javax.persistence.*;
 @Entity
 public class Fakulte {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "FAKULTE_ISMI")
+    private String adi;
+
+    @Column(name = "HOCA_SAYISI")
+    private int hocaSayısı;
+
     public Fakulte(){
 
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long fakulteId;
-
-    private String fakulteİsmi;
-    private int hocaSayısı;
-
-    public Fakulte(String fakulteİsmi, int hocaSayısı) {
-        this.fakulteİsmi = fakulteİsmi;
+    public Fakulte(String adi, int hocaSayısı) {
+        this.adi = adi;
         this.hocaSayısı = hocaSayısı;
     }
 
-    public String getFakulteİsmi() {
-        return fakulteİsmi;
+    public long getId() {
+        return id;
     }
 
-    public void setFakulteİsmi(String fakulteİsmi) {
-        this.fakulteİsmi = fakulteİsmi;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getAdi() {
+        return adi;
+    }
+
+    public void setAdi(String adi) {
+        this.adi = adi;
     }
 
     public int getHocaSayısı() {
@@ -36,13 +47,5 @@ public class Fakulte {
     public void setHocaSayısı(int hocaSayısı) {
         this.hocaSayısı = hocaSayısı;
 
-    }
-
-    public long getFakulteId() {
-        return fakulteId;
-    }
-
-    public void setFakulteId(long fakulteId) {
-        this.fakulteId = fakulteId;
     }
 }

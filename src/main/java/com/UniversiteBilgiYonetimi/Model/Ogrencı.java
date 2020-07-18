@@ -10,48 +10,59 @@ public class Ogrencı {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ogrenciId;
+    private long id;
 
-
-
-
+    @Column(name = "OGRENCI_NO")
     private int ogrenciNo ;
 
     @ManyToOne
-    @JoinColumn(name = "bolumId",referencedColumnName ="bolumId" )
-    private Bolum  bolumId;
+    @JoinColumn(name = "BOLUM_ID")
+    private Bolum bolum;
 
-    private int sınıf;
+    @Column(name = "SINIF")
+    private int sinif;
+
+    @Column(name = "AD")
     private String ad;
+
+    @Column(name = "SOYAD")
     private String soyad;
-    private String Email ;
+
+    @Column(name = "EMAIL")
+    private String email ;
+
+    @Column(name = "TELEFON_NO")
     private int telefonNo;
-    private Date doğumTarihi;
+
+    @Column(name = "DOGUM_TARIHI")
+    private Date dogumTarihi;
+
+    @Column(name = "SIFRE")
     private String şifre;
 
     @ManyToMany
     @JoinTable(
-            name = "Dersleri_alan_ogrenciler",
-            joinColumns = { @JoinColumn(name = "bolumId") },
-            inverseJoinColumns = { @JoinColumn(name = "dersId") }
+            name = "DERS_OGRENCI",
+            joinColumns = { @JoinColumn(name = "OGRENCI_ID") },
+            inverseJoinColumns = { @JoinColumn(name = "DERS_ID") }
     )
-    private Set<Ders> Dersler= new HashSet<>();
+    private Set<Ders> dersler= new HashSet<>();
 
 
-    public Bolum getBolumId() {
-        return bolumId;
+    public long getId() {
+        return id;
     }
 
-    public void setBolumId(Bolum bolumId) {
-        this.bolumId = bolumId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public long getOgrenciId() {
-        return ogrenciId;
+    public Bolum getBolum() {
+        return bolum;
     }
 
-    public void setOgrenciId(long ogrenciId) {
-        this.ogrenciId = ogrenciId;
+    public void setBolum(Bolum bolum) {
+        this.bolum = bolum;
     }
 
     public int getOgrenciNo() {
@@ -63,13 +74,12 @@ public class Ogrencı {
     }
 
 
-
-    public int getSınıf() {
-        return sınıf;
+    public int getSinif() {
+        return sinif;
     }
 
-    public void setSınıf(int sınıf) {
-        this.sınıf = sınıf;
+    public void setSinif(int sinif) {
+        this.sinif = sinif;
     }
 
     public String getAd() {
@@ -89,11 +99,11 @@ public class Ogrencı {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public int getTelefonNo() {
@@ -104,12 +114,12 @@ public class Ogrencı {
         this.telefonNo = telefonNo;
     }
 
-    public Date getDoğumTarihi() {
-        return doğumTarihi;
+    public Date getDogumTarihi() {
+        return dogumTarihi;
     }
 
-    public void setDoğumTarihi(Date doğumTarihi) {
-        this.doğumTarihi = doğumTarihi;
+    public void setDogumTarihi(Date dogumTarihi) {
+        this.dogumTarihi = dogumTarihi;
     }
 
     public String getŞifre() {
@@ -121,10 +131,10 @@ public class Ogrencı {
     }
 
     public Set<Ders> getDersler() {
-        return Dersler;
+        return dersler;
     }
 
     public void setDersler(Set<Ders> dersler) {
-        Dersler = dersler;
+        this.dersler = dersler;
     }
 }

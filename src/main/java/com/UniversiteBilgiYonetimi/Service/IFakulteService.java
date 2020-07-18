@@ -4,7 +4,7 @@ import com.UniversiteBilgiYonetimi.Model.Fakulte;
 
 import java.util.List;
 
-public interface IfakulteService {
+public interface IFakulteService {
 
      void ekle(Fakulte fakulte);
      void sil(Fakulte fakulte);

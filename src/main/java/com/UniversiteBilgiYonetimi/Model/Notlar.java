@@ -1,39 +1,47 @@
 package com.UniversiteBilgiYonetimi.Model;
 
-import com.UniversiteBilgiYonetimi.main.NotId;
-
 import javax.persistence.*;
 
 @Entity
-@IdClass(NotId.class)
 public class Notlar  {
 
-     @Id
-     @ManyToOne
-     @JoinColumn(name = "dersId")
-    private Ders dersId;
-     @Id
-     @ManyToOne
-     @JoinColumn(name = "ogrenciID")
-     private Ogrencı ogrenciId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+     @ManyToOne
+     @JoinColumn(name = "DERS_ID")
+     private Ders ders;
 
+     @ManyToOne
+     @JoinColumn(name = "OGRENCI_ID")
+     private Ogrencı ogrenci;
+
+    @Column(name = "HARF_NOTU")
     private String harfNotu;
 
-    public Ders getDersId() {
-        return dersId;
+    public Long getId() {
+        return id;
     }
 
-    public void setDersId(Ders dersId) {
-        this.dersId = dersId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Ogrencı getOgrenciId() {
-        return ogrenciId;
+    public Ders getDers() {
+        return ders;
     }
 
-    public void setOgrenciId(Ogrencı ogrenciId) {
-        this.ogrenciId = ogrenciId;
+    public void setDers(Ders ders) {
+        this.ders = ders;
+    }
+
+    public Ogrencı getOgrenci() {
+        return ogrenci;
+    }
+
+    public void setOgrenci(Ogrencı ogrenci) {
+        this.ogrenci = ogrenci;
     }
 
     public String getHarfNotu() {

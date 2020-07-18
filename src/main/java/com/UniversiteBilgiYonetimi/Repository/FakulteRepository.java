@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface FakulteRepository extends JpaRepository<Fakulte, Long> {
 
 
-    @Query("select fak   from Fakulte fak  where  fak.fakulteId=:id")
+    @Query("select fak   from Fakulte fak  where  fak.id=:id")
     public  Fakulte findFakulte(@Param("id") long id);
 
 

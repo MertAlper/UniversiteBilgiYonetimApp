@@ -9,45 +9,49 @@ public class Ders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long dersId;
+    private long id;
 
-    private String dersAdı;
+    @Column(name = "DERS_ADI")
+    private String dersAdi;
 
-    private String acıklama;
+    @Column(name = "ACIKLAMA")
+    private String aciklama;
 
+    @Column(name = "DONEM")
     private String donem;
 
+    @Column(name = "KREDI")
     private int kredi;
 
-    @ManyToMany(mappedBy = "Dersler")
+    @ManyToMany(mappedBy = "dersler")
     private Set<Ogrencı> Ogrenciler=new HashSet<>();
 
     @ManyToMany(mappedBy = "verilenDersler")
     private Set<OgretimUyesi> ogretimUyeleri=new HashSet<>();
 
 
-    public long getDersId() {
-        return dersId;
+    public long getId() {
+        return id;
     }
 
-    public void setDersId(long dersId) {
-        this.dersId = dersId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getDersAdı() {
-        return dersAdı;
+    public String getDersAdi() {
+        return dersAdi;
     }
 
-    public void setDersAdı(String dersAdı) {
-        this.dersAdı = dersAdı;
+    public void setDersAdi(String dersAdi) {
+        this.dersAdi = dersAdi;
     }
 
-    public String getAcıklama() {
-        return acıklama;
+    public String getAciklama() {
+        return aciklama;
     }
 
-    public void setAcıklama(String acıklama) {
-        this.acıklama = acıklama;
+    public void setAciklama(String aciklama) {
+        this.aciklama = aciklama;
     }
 
     public String getDonem() {
