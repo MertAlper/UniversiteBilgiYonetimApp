@@ -5,6 +5,10 @@ import javax.persistence.*;
 @Entity
 public class Fakulte {
 
+    public Fakulte(){
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long fakulteId;
