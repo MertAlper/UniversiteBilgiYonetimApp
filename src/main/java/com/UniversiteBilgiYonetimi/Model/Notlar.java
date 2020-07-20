@@ -15,7 +15,7 @@ public class Notlar  {
 
      @ManyToOne
      @JoinColumn(name = "OGRENCI_ID")
-     private Ogrencı ogrenci;
+     private Ogrenci ogrenci;
 
     @Column(name = "HARF_NOTU")
     private String harfNotu;
@@ -36,11 +36,11 @@ public class Notlar  {
         this.ders = ders;
     }
 
-    public Ogrencı getOgrenci() {
+    public Ogrenci getOgrenci() {
         return ogrenci;
     }
 
-    public void setOgrenci(Ogrencı ogrenci) {
+    public void setOgrenci(Ogrenci ogrenci) {
         this.ogrenci = ogrenci;
     }
 

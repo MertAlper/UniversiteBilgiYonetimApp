@@ -1,58 +1,16 @@
-package com.UniversiteBilgiYonetimi.Model;
+package com.UniversiteBilgiYonetimi.Model.dto;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
-@Entity
-public class OgretimUyesi {
+public class OgretimUyesiDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name = "EMAIL")
     private String email;
-
-    @Column(name = "AD")
     private String ad;
-
-    @Column(name = "SOYAD")
     private String soyad;
-
-    @Column(name = "ALAN")
     private String alan;
-
-    @Column(name = "UNVAN")
     private String unvan;
-
-    @Column(name = "SIFRE")
     private String şifre;
-
-    @Column(name = "TELEFON_NO")
     private String telefonNo;
-
-    @ManyToOne
-    @JoinColumn(name = "BOLUM_ID")
-    private Bolum bolum;
-
-
-    @ManyToMany
-    @JoinTable(
-            name = "Dersleri_veren_hocalar",
-            joinColumns = { @JoinColumn(name = "OGRETIM_UYESI_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "DERS_ID") }
-    )
-    private Set<Ders> verilenDersler= new HashSet<>();
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private long bolum;
 
     public String getEmail() {
         return email;
@@ -110,19 +68,11 @@ public class OgretimUyesi {
         this.telefonNo = telefonNo;
     }
 
-    public Bolum getBolum() {
+    public long getBolum() {
         return bolum;
     }
 
-    public void setBolum(Bolum bolum) {
+    public void setBolum(long bolum) {
         this.bolum = bolum;
-    }
-
-    public Set<Ders> getVerilenDersler() {
-        return verilenDersler;
-    }
-
-    public void setVerilenDersler(Set<Ders> verilenDersler) {
-        this.verilenDersler = verilenDersler;
     }
 }

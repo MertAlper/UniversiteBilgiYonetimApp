@@ -10,5 +10,7 @@ public interface IFakulteService {
      void sil(Fakulte fakulte);
     Fakulte find(long fakulteId);
     List<Fakulte> findAll();
+    void update(Fakulte fakulte);
+
 
 }

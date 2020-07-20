@@ -6,7 +6,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Ogrencı {
+public class Ogrenci {
+
+    public Ogrenci() {
+    }
+
+    public Ogrenci(Ogrenci other) {
+        this.id = other.id;
+        this.ogrenciNo = other.ogrenciNo;
+        this.bolum = other.bolum;
+        this.sinif = other.sinif;
+        this.ad = other.ad;
+        this.soyad = other.soyad;
+        this.email = other.email;
+        this.telefonNo = other.telefonNo;
+        this.dogumTarihi = other.dogumTarihi;
+        this.şifre = other.şifre;
+        this.dersler = other.dersler;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +52,7 @@ public class Ogrencı {
     private int telefonNo;
 
     @Column(name = "DOGUM_TARIHI")
-    private Date dogumTarihi;
+    private String dogumTarihi;
 
     @Column(name = "SIFRE")
     private String şifre;
@@ -114,11 +131,11 @@ public class Ogrencı {
         this.telefonNo = telefonNo;
     }
 
-    public Date getDogumTarihi() {
+    public String getDogumTarihi() {
         return dogumTarihi;
     }
 
-    public void setDogumTarihi(Date dogumTarihi) {
+    public void setDogumTarihi(String dogumTarihi) {
         this.dogumTarihi = dogumTarihi;
     }
 

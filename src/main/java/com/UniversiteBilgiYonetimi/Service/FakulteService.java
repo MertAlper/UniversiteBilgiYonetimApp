@@ -36,4 +36,10 @@ public class FakulteService implements IFakulteService{
         return fakulteRepository.findAll();
     }
 
+  public void update (Fakulte fakulte){
+
+
+        fakulteRepository.save(fakulte);
+  }
+
 }

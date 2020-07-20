@@ -31,10 +31,10 @@
      <mapping class="com.UniversiteBilgiYonetimi.Model.Fakulte"/>
     <mapping class="com.UniversiteBilgiYonetimi.Model.Bolum"/>
     <mapping class="com.UniversiteBilgiYonetimi.Model.Ders"/>
-    <mapping class="com.UniversiteBilgiYonetimi.Model.Ogrencı"/>
+    <mapping class="com.UniversiteBilgiYonetimi.Model.Ogrenci"/>
     <mapping class="com.UniversiteBilgiYonetimi.Model.OgretimUyesi"/>
     <mapping class="com.UniversiteBilgiYonetimi.Model.Notlar"/>
-    <mapping class="com.UniversiteBilgiYonetimi.main.NotId"/>
+
 
     <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->

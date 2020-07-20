@@ -16,4 +16,9 @@ public interface FakulteRepository extends JpaRepository<Fakulte, Long> {
     public  Fakulte findFakulte(@Param("id") long id);
 
 
+
+
+
+
+
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NotlarRepositroy  extends JpaRepository<Notlar, Long>  {
+public interface NotlarRepository extends JpaRepository<Notlar, Long>  {
 }

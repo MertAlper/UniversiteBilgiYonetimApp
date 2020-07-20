@@ -7,6 +7,19 @@ import java.util.Set;
 @Entity
 public class Ders {
 
+    public Ders() {
+    }
+
+    public Ders(Ders other) {
+        this.id = other.id;
+        this.dersAdi = other.dersAdi;
+        this.aciklama = other.aciklama;
+        this.donem = other.donem;
+        this.kredi = other.kredi;
+        this.ogrenciler = other.ogrenciler;
+        this.ogretimUyeleri = other.ogretimUyeleri;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -24,7 +37,7 @@ public class Ders {
     private int kredi;
 
     @ManyToMany(mappedBy = "dersler")
-    private Set<Ogrencı> Ogrenciler=new HashSet<>();
+    private Set<Ogrenci> ogrenciler =new HashSet<>();
 
     @ManyToMany(mappedBy = "verilenDersler")
     private Set<OgretimUyesi> ogretimUyeleri=new HashSet<>();
@@ -70,12 +83,12 @@ public class Ders {
         this.kredi = kredi;
     }
 
-    public Set<Ogrencı> getOgrenciler() {
-        return Ogrenciler;
+    public Set<Ogrenci> getOgrenciler() {
+        return ogrenciler;
     }
 
-    public void setOgrenciler(Set<Ogrencı> ogrenciler) {
-        Ogrenciler = ogrenciler;
+    public void setOgrenciler(Set<Ogrenci> ogrenciler) {
+        this.ogrenciler = ogrenciler;
     }
 
     public Set<OgretimUyesi> getOgretimUyeleri() {
