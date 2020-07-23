@@ -8,6 +8,7 @@ import com.UniversiteBilgiYonetimi.Model.dto.GeneralResponse;
 import com.UniversiteBilgiYonetimi.Service.IBolumService;
 import com.UniversiteBilgiYonetimi.Service.IFakulteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -73,10 +74,10 @@ public class BolumController {
 
     }
 
-    @GetMapping("get/all")
-    public List<Bolum> getBolumAll(){
+    @GetMapping("get/all/{pageNo}/{pageSize}")
+    public Page<Bolum> getBolumAll(@PathVariable  int pageNo, @PathVariable  int pageSize){
 
-        List<Bolum> bolumler= iBolumService.findAll();
+        Page<Bolum> bolumler= iBolumService.findAll(pageNo, pageSize);
 
         return bolumler;
 

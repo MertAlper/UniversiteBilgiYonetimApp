@@ -3,6 +3,9 @@ package com.UniversiteBilgiYonetimi.Service;
 import com.UniversiteBilgiYonetimi.Model.OgretimUyesi;
 import com.UniversiteBilgiYonetimi.Repository.OgretımUyesiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -30,12 +33,14 @@ public class OgretımUyesiService  implements  IOgretımUyesiService{
 
     @Override
     public Optional<OgretimUyesi> find(long id) {
+
         return repository.findById(id);
     }
 
     @Override
-    public List<OgretimUyesi> findAll() {
-        return repository.findAll();
+    public Page<OgretimUyesi> findAll(int pageNo, int pageSize) {
+        Pageable pageable= PageRequest.of(pageNo,pageSize);
+        return repository.findAll(pageable);
     }
 
     @Override

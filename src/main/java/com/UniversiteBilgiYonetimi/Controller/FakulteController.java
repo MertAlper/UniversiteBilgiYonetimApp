@@ -1,16 +1,14 @@
 package com.UniversiteBilgiYonetimi.Controller;
 
-import com.UniversiteBilgiYonetimi.Model.Bolum;
 import com.UniversiteBilgiYonetimi.Model.Fakulte;
 import com.UniversiteBilgiYonetimi.Model.dto.FakulteEklemeDTO;
 import com.UniversiteBilgiYonetimi.Model.dto.GeneralResponse;
 import com.UniversiteBilgiYonetimi.Service.IFakulteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/fakulte")
@@ -64,10 +62,10 @@ public class FakulteController {
     }
 
 
-    @GetMapping("get/all")
-    public List<Fakulte> getFakulteAll(){
+    @GetMapping("get/all{pageNo}/{pageSize}")
+    public Page<Fakulte> getFakulteAll(@PathVariable int pageNo, @PathVariable  int pageSize){
 
-        List<Fakulte> fakulteler= iFakulteService.findAll();
+        Page<Fakulte> fakulteler= iFakulteService.findAll(pageNo, pageSize);
 
         return fakulteler;
 

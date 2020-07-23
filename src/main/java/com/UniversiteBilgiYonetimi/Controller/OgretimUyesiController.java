@@ -1,19 +1,19 @@
 package com.UniversiteBilgiYonetimi.Controller;
 
 import com.UniversiteBilgiYonetimi.Model.Bolum;
-import com.UniversiteBilgiYonetimi.Model.Ogrenci;
+import com.UniversiteBilgiYonetimi.Model.Ders;
 import com.UniversiteBilgiYonetimi.Model.OgretimUyesi;
 import com.UniversiteBilgiYonetimi.Model.dto.GeneralResponse;
-import com.UniversiteBilgiYonetimi.Model.dto.OgrenciDTO;
 import com.UniversiteBilgiYonetimi.Model.dto.OgretimUyesiDTO;
 import com.UniversiteBilgiYonetimi.Service.IBolumService;
+import com.UniversiteBilgiYonetimi.Service.IDersService;
 import com.UniversiteBilgiYonetimi.Service.IOgretımUyesiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,7 +23,8 @@ public class OgretimUyesiController {
     private IOgretımUyesiService iOgretımUyesiService;
     @Autowired
     private  IBolumService iBolumService;
-
+    @Autowired
+    private IDersService iDersService;
 
     @PostMapping("/add")
     public ResponseEntity<GeneralResponse> addOgretimUyesi(@RequestBody OgretimUyesiDTO hocaDTO) {
@@ -79,10 +80,10 @@ public class OgretimUyesiController {
 
     }
 
-    @GetMapping("get/all")
-    public List<OgretimUyesi> getAll(){
+    @GetMapping("get/all{pageNo}/{pageSize}")
+    public Page<OgretimUyesi> getAll(@PathVariable  int pageNo, @PathVariable  int pageSize){
 
-        List<OgretimUyesi> hocalar= iOgretımUyesiService.findAll();
+        Page<OgretimUyesi> hocalar= iOgretımUyesiService.findAll(pageNo, pageSize);
 
         return hocalar;
 
@@ -115,6 +116,22 @@ public class OgretimUyesiController {
         }
     }
 
+    @PutMapping("/update/ders/{ogrenciId}/{dersId}")
+    public ResponseEntity<GeneralResponse> addOgretimUyesi_Ders(@PathVariable long dersId, @PathVariable long hocaId){
+
+        OgretimUyesi ogretimUyesi = iOgretımUyesiService.find(hocaId).get();
+        Ders ders= iDersService.find(dersId).get();
+        ogretimUyesi.getVerilenDersler().add(ders);
+
+        iOgretımUyesiService.update(ogretimUyesi);
+
+
+        GeneralResponse response = new GeneralResponse("Ogrenci Güncelleme İşlemi Başarılı");
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+
+
+
+    }
 
 
 }

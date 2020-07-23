@@ -9,9 +9,11 @@ import com.UniversiteBilgiYonetimi.Model.dto.DersDTO;
 import com.UniversiteBilgiYonetimi.Model.dto.GeneralResponse;
 import com.UniversiteBilgiYonetimi.Model.dto.OgrenciDTO;
 import com.UniversiteBilgiYonetimi.Service.IBolumService;
+import com.UniversiteBilgiYonetimi.Service.IDersService;
 import com.UniversiteBilgiYonetimi.Service.IOgrenciService;
 import com.UniversiteBilgiYonetimi.Service.OgrenciService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +30,9 @@ public class OgrenciController {
 
     @Autowired
     private IBolumService iBolumService;
+
+    @Autowired
+    private IDersService iDersService;
 
     @PostMapping("/add")
     public ResponseEntity<GeneralResponse> addOgrenci(@RequestBody OgrenciDTO ogrenciDTO) {
@@ -85,10 +90,10 @@ public class OgrenciController {
 
     }
 
-    @GetMapping("get/all")
-    public List<Ogrenci> getOgrenciAll(){
+    @GetMapping("get/all{pageNo}/{pageSize}")
+    public Page<Ogrenci> getOgrenciAll(@PathVariable  int pageNo,  @PathVariable  int pageSize){
 
-        List<Ogrenci> ogrenciler= iOgrenciService.findAll();
+        Page<Ogrenci> ogrenciler= iOgrenciService.findAll(pageNo, pageSize);
 
         return ogrenciler;
 
@@ -110,7 +115,6 @@ public class OgrenciController {
             ogrenci.setSinif(ogrenciDTO.getSinif());
             ogrenci.setTelefonNo(ogrenciDTO.getTelefonNo());
             ogrenci.setŞifre(ogrenciDTO.getŞifre());
-
             iOgrenciService.update(ogrenci);
 
             GeneralResponse response = new GeneralResponse("Ogrenci Güncelleme İşlemi Başarılı");
@@ -124,5 +128,19 @@ public class OgrenciController {
 
 
 
+    @PutMapping("/update/ders/{ogrenciId}/{dersId}")
+    public ResponseEntity<GeneralResponse> addOgrenci_Ders(@PathVariable long dersId, @PathVariable long ogrenciId){
+
+        Ogrenci ogrenci = iOgrenciService.find(ogrenciId).get();
+        Ders ders= iDersService.find(dersId).get();
+
+        ogrenci.getDersler().add(ders);
+        iOgrenciService.update(ogrenci);
+        GeneralResponse response = new GeneralResponse("Ogrenci Güncelleme İşlemi Başarılı");
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+
+
+
+    }
 
 }

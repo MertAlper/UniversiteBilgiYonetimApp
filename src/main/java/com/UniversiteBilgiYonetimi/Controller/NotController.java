@@ -1,23 +1,19 @@
 package com.UniversiteBilgiYonetimi.Controller;
 
 
-import com.UniversiteBilgiYonetimi.Model.Bolum;
 import com.UniversiteBilgiYonetimi.Model.Ders;
 import com.UniversiteBilgiYonetimi.Model.Notlar;
 import com.UniversiteBilgiYonetimi.Model.Ogrenci;
 import com.UniversiteBilgiYonetimi.Model.dto.GeneralResponse;
 import com.UniversiteBilgiYonetimi.Model.dto.NotDTO;
-import com.UniversiteBilgiYonetimi.Model.dto.OgrenciDTO;
 import com.UniversiteBilgiYonetimi.Service.IDersService;
 import com.UniversiteBilgiYonetimi.Service.INotlarService;
 import com.UniversiteBilgiYonetimi.Service.IOgrenciService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/notlar")
@@ -83,10 +79,10 @@ public class NotController {
 
     }
 
-    @GetMapping("get/all")
-    public List<Notlar> getNotAll(){
+    @GetMapping("get/all{pageNo}/{pageSize}")
+    public Page<Notlar> getNotAll(@PathVariable  int pageNo, @PathVariable  int pageSize){
 
-        List<Notlar> notlar= iNotlarService.findAll();
+        Page<Notlar> notlar= iNotlarService.findAll(pageNo, pageSize);
 
         return notlar;
 

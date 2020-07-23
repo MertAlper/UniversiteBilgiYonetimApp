@@ -5,6 +5,9 @@ import com.UniversiteBilgiYonetimi.Model.Fakulte;
 import com.UniversiteBilgiYonetimi.Repository.BolumRepository;
 import com.UniversiteBilgiYonetimi.Repository.DersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -36,8 +39,9 @@ public class DersService implements IDersService {
     }
 
     @Override
-    public List<Ders> findAll() {
-        return dersRepository.findAll();
+    public Page<Ders> findAll(int pageNo, int pageSize) {
+        Pageable pageable= PageRequest.of(pageNo,pageSize);
+        return dersRepository.findAll(pageable);
     }
 
     @Override

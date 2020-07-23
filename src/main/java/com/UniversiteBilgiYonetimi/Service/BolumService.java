@@ -3,6 +3,9 @@ package com.UniversiteBilgiYonetimi.Service;
 import com.UniversiteBilgiYonetimi.Model.Bolum;
 import com.UniversiteBilgiYonetimi.Repository.BolumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,9 +37,10 @@ public class BolumService implements IBolumService {
     }
 
 
-    public List<Bolum> findAll(){
+    public Page<Bolum> findAll(int pageNo, int pageSize){
 
-        return bolumRepository.findAll();
+        Pageable pageable= PageRequest.of(pageNo,pageSize);
+        return bolumRepository.findAll(pageable);
     }
 
     public void update (Bolum bolum){

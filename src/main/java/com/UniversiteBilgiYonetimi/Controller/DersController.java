@@ -1,20 +1,14 @@
 package com.UniversiteBilgiYonetimi.Controller;
 
-import com.UniversiteBilgiYonetimi.Model.Bolum;
 import com.UniversiteBilgiYonetimi.Model.Ders;
-import com.UniversiteBilgiYonetimi.Model.Fakulte;
-import com.UniversiteBilgiYonetimi.Model.dto.BolumEklemeDTO;
 import com.UniversiteBilgiYonetimi.Model.dto.DersDTO;
 import com.UniversiteBilgiYonetimi.Model.dto.GeneralResponse;
-import com.UniversiteBilgiYonetimi.Service.IBolumService;
 import com.UniversiteBilgiYonetimi.Service.IDersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/ders")
@@ -64,10 +58,10 @@ public class DersController {
 
     }
 
-    @GetMapping("get/all")
-    public List<Ders> getDersAll(){
+    @GetMapping("get/all{pageNo}/{pageSize}")
+    public Page<Ders> getDersAll(@PathVariable int pageNo, @PathVariable  int pageSize){
 
-        List<Ders> dersler= iDersService.findAll();
+        Page<Ders> dersler= iDersService.findAll(pageNo, pageSize);
 
         return dersler;
 

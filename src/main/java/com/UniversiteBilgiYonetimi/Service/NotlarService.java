@@ -3,6 +3,9 @@ package com.UniversiteBilgiYonetimi.Service;
 import com.UniversiteBilgiYonetimi.Model.Notlar;
 import com.UniversiteBilgiYonetimi.Repository.NotlarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,8 +37,9 @@ public class NotlarService implements INotlarService {
     }
 
     @Override
-    public List<Notlar> findAll() {
-        return notlarRepository.findAll();
+    public Page<Notlar> findAll(int pageNo, int pageSize) {
+        Pageable pageable= PageRequest.of(pageNo,pageSize);
+        return notlarRepository.findAll(pageable);
     }
 
     @Override
