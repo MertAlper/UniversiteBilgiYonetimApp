@@ -1,49 +1,43 @@
 package com.UniversiteBilgiYonetimi.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class User {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userId;
-
-    @Column(name = "EMAIL")
-    private String email;
-
-
-    @Column(name = "PASSWORD")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private long id;
+    @Column
+    private String username;
+    @Column
+    @JsonIgnore
     private String password;
 
-    @ManyToMany
-    @JoinTable(
-            name = "USER_ROLES",
-            joinColumns = { @JoinColumn(name = "USER_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") }
-    )
-    private Set<Role> Roles= new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLES", joinColumns = {
+            @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
+            @JoinColumn(name = "ROLE_ID") })
+    private Set<Role> roles;
 
-    public long getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -54,11 +48,13 @@ public class User {
         this.password = password;
     }
 
+
+
     public Set<Role> getRoles() {
-        return Roles;
+        return roles;
     }
 
     public void setRoles(Set<Role> roles) {
-        Roles = roles;
+        this.roles = roles;
     }
 }

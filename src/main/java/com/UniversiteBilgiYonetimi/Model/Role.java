@@ -1,44 +1,41 @@
 package com.UniversiteBilgiYonetimi.Model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long roleId;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private long id;
 
-    @Column(name = "ROLE_NAME")
-    private String roleName;
+    @Column
+    private String name;
 
+    @Column
+    private String description;
 
-    @ManyToMany(mappedBy = "Roles")
-    private Set<User> Users =new HashSet<>();
-
-    public long getRoleId() {
-        return roleId;
+    public long getId() {
+        return id;
     }
 
-    public void setRoleId(long roleId) {
-        this.roleId = roleId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getName() {
+        return name;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Set<User> getUsers() {
-        return Users;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUsers(Set<User> users) {
-        Users = users;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
